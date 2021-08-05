@@ -32,11 +32,12 @@
 
 library("ggthemes")
 library("tidyverse")
+library("here")
 library("devtools")
-load_all("~/SpiderOak Hive/articulos/arbitrados/conservation_letters/consLettersUtils")
+load_all("consLettersUtils")
 
 # Source ggplot theme----------------------------------------------------------
-source("R/functions/theme_cmydas.R")
+# source("R/functions/theme_cmydas.R")
 
 #  Load data and prepare data -------------------------------------------------
 # Load observed and imputed data points from "~/R/imputed_data_wrangling.R"
@@ -118,3 +119,6 @@ miceRug <- miceRug +
     limits=c(-2, 69) # Adjust to display labels from 1950-1985
   )  
 miceRug
+
+# Save plot as svg
+ggsave("figures/trend_plot.svg", device = svg)

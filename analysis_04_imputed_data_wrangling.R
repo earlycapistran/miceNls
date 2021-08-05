@@ -17,16 +17,18 @@
 # - - -
 
 library("devtools")
-load_all("~/SpiderOak Hive/articulos/arbitrados/conservation_letters/consLettersUtils")
+library("here")
+# Load consLettersUtils package
+load_all("consLettersUtils")
 
 # Source functions ------------------------------------------------------------
-source("R/functions/getMeanImp.R")
-source("R/functions/pivotImp.R")
-source("R/functions/theme_cmydas.R")
+# source("R/functions/getMeanImp.R")
+# source("R/functions/pivotImp.R")
+# source("R/functions/theme_cmydas.R")
 
 #  Load data and prepare data -------------------------------------------------
 # Load data 
-cmydas_data <- read.csv("data/cpue_final.csv", header=TRUE)
+cmydas_data <- read.csv("data/cpue_data.csv", header=TRUE)
 
 # Prepare a data frame with data from the "Conservation" phase for curve 
 # fitting. This will include the values from the Commercial Fishery "collapse" 

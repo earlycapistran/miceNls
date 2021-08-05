@@ -19,14 +19,14 @@
 library("ggthemes")
 library("tidyverse")
 library("gginnards")
-library("patchwork")
+library("here")
 library("devtools")
-load_all("~/SpiderOak Hive/articulos/arbitrados/conservation_letters/consLettersUtils")
+load_all("consLettersUtils")
 
-source("R/functions/theme_cmydas.R")
+# source("R/functions/theme_cmydas.R")
 
 # Load and prepare data
-cmydas_data = read.csv("data/cpue_final.csv", header=TRUE)
+cmydas_data = read.csv("data/cpue_data.csv", header=TRUE)
 
 # Add placeholders for missing values . . . 
 # Store missing CPUE values in separate data frame
@@ -108,5 +108,5 @@ cpue_plot_annotated <- gradient_na +
            arrow = arrow(length = unit(3, "mm")))
 cpue_plot_annotated
 
-# Save plot to file
+# Save plot to file as rds for layouts
 saveRDS(cpue_plot_annotated, file = "results/annotated_cpue_plot.rds")

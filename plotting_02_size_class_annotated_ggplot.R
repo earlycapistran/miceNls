@@ -27,14 +27,14 @@
 library("ggthemes")
 library("tidyverse")
 library("gginnards")
-library("patchwork")
+library("here")
 library("devtools")
-load_all("~/SpiderOak Hive/articulos/arbitrados/conservation_letters/consLettersUtils")
+load_all("consLettersUtils")
 
-source("R/functions/theme_cmydas.R")
+# source("R/functions/theme_cmydas.R")
 
 # Load and prepare data
-size_data = read.csv("data/morphometric_final.csv")
+size_data = read.csv("data/morphometric_data.csv")
 
 # Count turtles per  size class per year in BLA
 class_per_year <- size_data %>%

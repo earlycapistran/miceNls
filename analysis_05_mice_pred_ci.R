@@ -13,12 +13,13 @@
 
 library("tidyverse")
 library("broom")
+library("here")
 library("devtools")
-load_all("~/SpiderOak Hive/articulos/arbitrados/conservation_letters/consLettersUtils")
+load_all("consLettersUtils")
 
 # Load functions
-source("R/functions/getPooledSE.R")
-source("R/functions/getPooledPreds.R")
+# source("R/functions/getPooledSE.R")
+# source("R/functions/getPooledPreds.R")
 
 # Load 'mira' objects to estimate confidence intervals
 cf_mira <- readRDS("results/cf_mira_final.rds")

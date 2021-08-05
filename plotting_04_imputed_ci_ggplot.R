@@ -19,11 +19,12 @@
 # Load libraries
 library("ggthemes")
 library("tidyverse")
+library("here")
 library("devtools")
-load_all("~/SpiderOak Hive/articulos/arbitrados/conservation_letters/consLettersUtils")
+load_all("consLettersUtils")
 
 # Source ggplot theme ---------------------------------------------------------
-source("R/functions/theme_cmydas.R")
+# source("R/functions/theme_cmydas.R")
 
 #  Load data and prepare data -------------------------------------------------
 # Store "year" values as label to replace serialized values

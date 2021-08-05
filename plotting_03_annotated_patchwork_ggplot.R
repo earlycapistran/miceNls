@@ -9,10 +9,11 @@
 
 library("tidyverse")
 library("patchwork")
+library("here")
 library("devtools")
-load_all("~/SpiderOak Hive/articulos/arbitrados/conservation_letters/consLettersUtils")
+load_all("consLettersUtils")
 
-source("R/functions/theme_cmydas.R")
+# source("R/functions/theme_cmydas.R")
 
 annot_cpue_plot <- readRDS("results/annotated_cpue_plot.rds")
 annot_size_plot <- readRDS("results/size_plot_annotated.rds")
@@ -22,3 +23,6 @@ annot_cpue_plot / annot_size_plot +
   plot_annotation(tag_levels = 'a') & 
   theme(plot.tag = element_text(size = 16),
         text = element_text('lato'))
+
+# Save plot as svg
+ggsave("figures/annotated_stacked_plot.svg", device = svg)

@@ -15,13 +15,15 @@
 # ---
 
 library("tidyverse")
+library("here")
 library("devtools")
-load_all("~/SpiderOak Hive/articulos/arbitrados/conservation_letters/consLettersUtils")
+load_all("consLettersUtils")
 
-source("R/functions/getGrowthRate.R")
-source("R/functions/getRateComp.R")
+# source("R/functions/getGrowthRate.R")
+# source("R/functions/getRateComp.R")
 
-cmydas_data <- read.csv("data/cpue_final.csv")
+# Load and prepare data
+cmydas_data <- read.csv("data/cpue_data.csv")
 
 cpue <- cmydas_data %>% 
   select(year, cpue) 

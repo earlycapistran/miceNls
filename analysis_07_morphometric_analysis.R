@@ -15,15 +15,16 @@
 # Load libraries and source functions
 library("tidyverse")
 library("car")
+library("here")
 library("devtools")
-load_all("~/SpiderOak Hive/articulos/arbitrados/conservation_letters/consLettersUtils")
+load_all("consLettersUtils")
 
 
-source("R/functions/getDescStats.R")
-source("R/functions/theme_cmydas.R")
+# source("R/functions/getDescStats.R")
+# source("R/functions/theme_cmydas.R")
 
 # Load and prepare data
-size_data = read.csv("data/morphometric_final.csv")
+size_data = read.csv("data/morphometric_data.csv")
 
 size_data <- size_data %>% 
   mutate(period = as.factor(ifelse(year %in% c(1995:2005), 
