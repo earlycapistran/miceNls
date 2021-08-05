@@ -22,16 +22,16 @@
 # if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
 #   install.packages(setdiff(packages, rownames(installed.packages())))
 # }
+#
+# devtools::install('consLettersUtils')
 
-
+# Load libraries and packages
 library("ggthemes")
 library("tidyverse")
 library("gginnards")
 library("here")
 library("devtools")
 load_all("consLettersUtils")
-
-# source("R/functions/theme_cmydas.R")
 
 # Load and prepare data
 size_data = read.csv("data/morphometric_data.csv")

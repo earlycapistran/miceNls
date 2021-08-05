@@ -11,15 +11,12 @@
 #     "~R/cf_mice_analysis.R" and processed with "~/R/imputed_data_wrangling.R"
 # - - -
 
+# Load libraries and packages
 library("tidyverse")
 library("broom")
 library("here")
 library("devtools")
-load_all("consLettersUtils")
-
-# Load functions
-# source("R/functions/getPooledSE.R")
-# source("R/functions/getPooledPreds.R")
+devtools::load_all("consLettersUtils")
 
 # Load 'mira' objects to estimate confidence intervals
 cf_mira <- readRDS("results/cf_mira_final.rds")

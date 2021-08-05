@@ -25,7 +25,9 @@
 # if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
 #   install.packages(setdiff(packages, rownames(installed.packages())))  
 # }
+# devtools::install('consLettersUtils')
 
+# Load libraries and packages
 library("beepr") # 'Beep' when analysis is ready
 library("car")
 library("DescTools")
@@ -34,18 +36,7 @@ library("tidyverse")
 library("VIM")
 library("here")
 library("devtools")
-load_all("consLettersUtils")
-
-# Source functions ------------------------------------------------------------
-# source("R/functions/getExpStartVal.R")
-# source("R/functions/mCount.R")
-# source("R/functions/analyseMiraResi.R")
-# source("R/functions/analyseNlsResiduals.R")
-# source("R/functions/getPooledParams.R")
-# source("R/functions/obsImpResiPlot.R")
-# source("R/functions/poolResiduals.R")
-# source("R/functions/getMiceR2.R")
-# source("R/functions/getPooledR2.R")
+devtools::load_all("consLettersUtils")
 
 #  Load data and prepare data -------------------------------------------------
 # Load data 

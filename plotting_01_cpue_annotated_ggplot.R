@@ -15,15 +15,13 @@
 #     (PeerJ, 2020)
 # - - -
 
-
+# Load libraries and packages
 library("ggthemes")
 library("tidyverse")
 library("gginnards")
 library("here")
 library("devtools")
 load_all("consLettersUtils")
-
-# source("R/functions/theme_cmydas.R")
 
 # Load and prepare data
 cmydas_data = read.csv("data/cpue_data.csv", header=TRUE)

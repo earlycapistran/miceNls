@@ -7,13 +7,12 @@
 #   - This script joins two annotated plots into a single panel. 
 # - - -
 
+# Load libraries and packages
 library("tidyverse")
 library("patchwork")
 library("here")
 library("devtools")
 load_all("consLettersUtils")
-
-# source("R/functions/theme_cmydas.R")
 
 annot_cpue_plot <- readRDS("results/annotated_cpue_plot.rds")
 annot_size_plot <- readRDS("results/size_plot_annotated.rds")

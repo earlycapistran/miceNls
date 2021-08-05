@@ -16,15 +16,12 @@
 #     (PeerJ, 2020)
 # - - -
 
+# Load libraries
 library("devtools")
 library("here")
-# Load consLettersUtils package
-load_all("consLettersUtils")
 
-# Source functions ------------------------------------------------------------
-# source("R/functions/getMeanImp.R")
-# source("R/functions/pivotImp.R")
-# source("R/functions/theme_cmydas.R")
+# Load consLettersUtils package
+devtools::load_all("consLettersUtils")
 
 #  Load data and prepare data -------------------------------------------------
 # Load data 

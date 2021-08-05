@@ -16,7 +16,7 @@
 #     (PeerJ,2020)
 # - - -
 
-# Load libraries
+# Load libraries and packages
 library("ggthemes")
 library("tidyverse")
 library("here")

@@ -14,13 +14,11 @@
 #     (PeerJ, 2020)
 # ---
 
+# Load libraries and packages
 library("tidyverse")
 library("here")
 library("devtools")
 load_all("consLettersUtils")
-
-# source("R/functions/getGrowthRate.R")
-# source("R/functions/getRateComp.R")
 
 # Load and prepare data
 cmydas_data <- read.csv("data/cpue_data.csv")

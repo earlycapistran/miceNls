@@ -13,10 +13,15 @@
 #     (PeerJ, 2020)
 # - - -
 
+# devtools::install('consLettersUtils')
+
 # Load libraries and source functions
 library("tidyverse")
 library("devtools")
 library("here")
+
+# Install and load consLettersUtils package
+# devtools::install('consLettersUtils')
 devtools::load_all('consLettersUtils')
 
 #  Load data and prepare data -------------------------------------------------

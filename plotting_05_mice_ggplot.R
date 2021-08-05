@@ -24,12 +24,15 @@
 # Check if required libraries are installed and install
 # if necessary
 
-# packages <- c("ggthemes", "patchwork", "tidyverse")
+# packages <- c("ggthemes", "patchwork", "tidyverse", "here")
 # 
 # if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
 #   install.packages(setdiff(packages, rownames(installed.packages())))
 # }
+# 
+# devtools::install('consLettersUtils')
 
+# Load libraries and packages
 library("ggthemes")
 library("tidyverse")
 library("here")

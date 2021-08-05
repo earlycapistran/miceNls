@@ -12,16 +12,12 @@
 #     Protegidas.
 # - - -
 
-# Load libraries and source functions
+# Load libraries and packages
 library("tidyverse")
 library("car")
 library("here")
 library("devtools")
 load_all("consLettersUtils")
-
-
-# source("R/functions/getDescStats.R")
-# source("R/functions/theme_cmydas.R")
 
 # Load and prepare data
 size_data = read.csv("data/morphometric_data.csv")
