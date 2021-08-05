@@ -1,0 +1,26 @@
+Package: consLettersUtils
+Version: 0.1
+Date: 2021-08-04
+Title: Conservation Letters Utilities
+License: GPL
+Description: Data and functions for Conservation Letters manuscript.
+Author: Michelle María Early Capistrán <earlycapistran@comunidad.unam.mx>
+Maintainer: Michelle María Early Capistrán <earlycapistran@comunidad.unam.mx>
+Encoding: UTF-8
+RoxygenNote: 7.1.1
+Depends:
+    R (>= 3.1.0)
+Imports:
+    car,
+    DescTools,
+    VIM, 
+    proto,
+    dplyr,
+    stats,
+    graphics, 
+    broom,
+    tidyr,
+    ggplot2,
+    grDevices,
+    mice,
+    magrittr

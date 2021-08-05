@@ -1,0 +1,3 @@
+Data: Early-Capistrán, M.M., Seminoff, J.A., Comisión Nacional de Áreas Naturales Protegidas, Grupo Tortuguero de Bahía de los Ángeles (2021) Dataset: Integrating ecological monitoring and local ecological knowledge to evaluate conservation outcomes. (DOI).
+
+Code: Early-Capistrán (2021) R package: ConsLetters. (DOI).
