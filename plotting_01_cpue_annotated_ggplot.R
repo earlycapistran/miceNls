@@ -25,6 +25,7 @@ library("gginnards")
 library("here")
 library("devtools")
 library("scico")
+library("grid")
 load_all("consLettersUtils")
 
 # Load and prepare data
@@ -65,30 +66,42 @@ gradient_base
 # View palettes:
 scico_palette_show()
 
-gradient_base <- ggplot() +
+gradient_base_scico <- ggplot() +
   geom_col(cmydas_data, 
            mapping = aes(x = year, y= cpue, fill = cpue)) +
   xlim(1950, 2020) +
   labs(x = "Year", y = "CPUE (turtles/12 hr)", fill = "CPUE") +
-  scale_fill_scico(palette = 'berlin') +
+  scale_fill_scico(palette = 'lajolla', begin = 0.2, end = 0.8) +
   theme_cmydas() +
   theme(
     legend.position = "right",
-    legend.box = "horizontal",
-    legend.spacing.y = unit(3, "mm"),
-    axis.title.x=element_blank(), 
-    axis.text.x=element_blank(),
-    axis.ticks.x=element_blank()
+    legend.box = "horizontal"
   )
-gradient_base
+gradient_base_scico
 
+gradient_base_scico <- ggplot() +
+  geom_col(cmydas_data, 
+           mapping = aes(x = year, y= cpue, fill = cpue)) +
+  xlim(1950, 2020) +
+  labs(x = "Year", y = "CPUE (turtles/12 hr)", fill = "CPUE") +
+  scale_fill_scico(palette = 'oslo', begin = 0.2, end = 0.6, direction = -1) +
+  theme_cmydas() +
+  theme(
+    legend.position = "right",
+    legend.box = "horizontal"
+  )
+gradient_base_scico
+
+#vik
+#vik0
+#roma
 
 # Generate a shaded area to distinguish LEK-derived values 
-gradient_shade <- gradient_base +
+gradient_shade <- gradient_base_scico +
   annotate(
     "rect", 
     xmin = 1950, xmax = 1983, ymin = 0, ymax = 20,
-    alpha = 0.75, color="ivory2", fill="ivory2"
+    alpha = 0.75, color="lightgrey", fill="lightgrey"
     ) 
 gradient_shade
 
@@ -119,7 +132,7 @@ gradient_na
 cpue_plot_annotated <- gradient_na + 
   annotate("label", 
            x = c(1979, 1979, 1983, 1990, 1995), 
-           y = c(10, 7, 7, 7, 7), 
+           y = c(8.5, 7, 7, 7, 7), 
            label = c("1", "2", "3", "4", "5") , 
            colour = "#363636", fill = "white", 
            family = "lato", fontface = "bold") +
@@ -127,9 +140,9 @@ cpue_plot_annotated <- gradient_na +
            x = c(1979, 1983, 1990, 1995),
            xend = c(1979, 1983, 1990, 1995),
            y = c(6, 6, 6, 6),
-           yend = c(2, 0.5, 0.5,0.5),
+           yend = c(2, 0.5, 0.5,0.65),
            color = "#363636",
-           arrow = arrow(length = unit(3, "mm")))
+           arrow = arrow(length = unit(3, "mm"))) 
 cpue_plot_annotated
 
 # Save plot to file as rds for layouts
