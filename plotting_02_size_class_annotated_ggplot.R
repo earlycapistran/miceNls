@@ -31,6 +31,7 @@ library("tidyverse")
 library("gginnards")
 library("here")
 library("devtools")
+library("scico")
 load_all("consLettersUtils")
 
 # Load and prepare data
@@ -58,6 +59,19 @@ size_plot <- ggplot(
   aes(x = year, y = n_turtles, fill = size_class)) +
   geom_col(position = "dodge")  +
   xlim(1950, 2020) +
+  labs(x = "Year", y = "Turtles / year", fill = "Life stage") +
+  theme_cmydas()
+size_plot
+
+# Test with scientific colour maps
+scico_palette_show()
+
+size_plot <- ggplot(
+  class_per_year, 
+  aes(x = year, y = n_turtles, fill = size_class)) +
+  scale_fill_scico_d(palette = "cork", begin = 0.2, end = 0.8) +
+  geom_col(position = "dodge")  +
+  xlim(1995, 2020) +
   labs(x = "Year", y = "Turtles / year", fill = "Life stage") +
   theme_cmydas()
 size_plot
