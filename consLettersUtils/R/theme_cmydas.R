@@ -20,7 +20,7 @@ theme_cmydas <- function(base_size = 22,
                       base_family = "Lato",
                       base_line_size = base_size / 170,
                       base_rect_size = base_size / 170){
-  theme_light(base_size = base_size, 
+  theme_gray(base_size = base_size, 
                 base_family = base_family,
                 base_line_size = base_line_size) %+replace%
     theme(
@@ -35,8 +35,6 @@ theme_cmydas <- function(base_size = 22,
         color = rgb(105, 105, 105, maxColorValue = 500),
         size = rel(0.55), angle = 90),
       axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm")),
-      panel.grid.major = element_blank(),   
-      panel.grid.minor = element_blank(), 
       legend.position = "bottom",
       legend.title = element_text(color = rgb(105, 105, 105, maxColorValue = 500), 
                                               size = rel(0.65)),
