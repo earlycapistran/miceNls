@@ -15,12 +15,16 @@
 #     (PeerJ, 2020)
 # - - -
 
+# Install scientific colour maps
+# devtools::install_github("thomasp85/scico")
+
 # Load libraries and packages
 library("ggthemes")
 library("tidyverse")
 library("gginnards")
 library("here")
 library("devtools")
+library("scico")
 load_all("consLettersUtils")
 
 # Load and prepare data
@@ -56,6 +60,28 @@ gradient_base <- ggplot() +
     axis.ticks.x=element_blank()
     )
 gradient_base
+
+# Test with scientific colour maps ---
+# View palettes:
+scico_palette_show()
+
+gradient_base <- ggplot() +
+  geom_col(cmydas_data, 
+           mapping = aes(x = year, y= cpue, fill = cpue)) +
+  xlim(1950, 2020) +
+  labs(x = "Year", y = "CPUE (turtles/12 hr)", fill = "CPUE") +
+  scale_fill_scico(palette = 'berlin') +
+  theme_cmydas() +
+  theme(
+    legend.position = "right",
+    legend.box = "horizontal",
+    legend.spacing.y = unit(3, "mm"),
+    axis.title.x=element_blank(), 
+    axis.text.x=element_blank(),
+    axis.ticks.x=element_blank()
+  )
+gradient_base
+
 
 # Generate a shaded area to distinguish LEK-derived values 
 gradient_shade <- gradient_base +
