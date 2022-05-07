@@ -58,8 +58,8 @@ size_plot <- ggplot(
   class_per_year, 
   aes(x = year, y = n_turtles, fill = size_class)) +
   geom_col(position = "dodge")  +
-  xlim(1995, 2020) +
-  labs(x = "Year", y = "Turtles / year", fill = "Life stage") +
+  xlim(1994, 2019) +
+  labs(x = "Year", y = "Turtles / year", fill = " ") +
   theme_cmydas()
 size_plot
 
@@ -70,8 +70,8 @@ size_plot_na <- size_plot +
     mapping = aes(x = year, y = placeholder, fill = "placeholder")
     ) +
   scale_fill_manual(
-    values = c("#FBA63B", "#2EBEB4", "#595959"),
-    labels = c("Adult", "Juvenile", "NA")
+    values = c("#4E79A7", "#F28E2b", "#595959"),
+    labels = c("Adult", "Juvenile", "Missing Data")
     ) +
   theme(
     legend.box = "vertical",
@@ -81,26 +81,29 @@ size_plot_na <- size_plot +
 size_plot_na
 
 # Annotate dates for key events -----------------------------------------------
-# Label 1: Beginning of permanent sea turtle conservation efforts in BLA
-# Label 2: Nesting beach protection
-# Label 3: Permit closure for C. mydas
-# Label 4: Permanent ban on sea turtle captures in Mexico
-# Label 5: Start of in-water monitoring at BLA
 size_plot_annotated <- size_plot_na + 
-  annotate("label", 
-           x = c(1979, 1979, 1983, 1990, 1995), 
-           y = c(20,25, 25, 25, 25), 
-           label = c("1", "2", "3", "4", "5") , 
+  annotate("text", 
+           x = c(2010, 2010), 
+           y = c(75, 70), 
+           label = c(">30 years of nesting beach protection", 
+                     ">20 years of full ban on captures"),
+           hjust = 0,
            colour = "#363636", fill = "white", 
-           family = "lato", fontface = "bold") +
-  annotate("segment",
-           x = c(1979, 1983, 1990, 1995),
-           xend = c(1979, 1983, 1990, 1995),
-           y = c(17, 22, 22, 22),
-           yend = c( 0.5, 0.5, 0.5,18),
-           color = "#363636",
-           arrow = arrow(length = unit(3, "mm")))
+           family = "lato", fontface = "bold")
 size_plot_annotated
+
+# Generate a shaded area to distinguish LEK-derived values 
+gradient_shade <- size_plot_annotated +
+  annotate(
+    "rect", 
+    xmin = 2008, xmax = 2019, ymin = 0, ymax = 80,
+    alpha = 0.75, color="lightgrey", fill="lightgrey"
+  ) 
+gradient_shade
+
+# Move shading layer to background
+gradient_shade <- move_layers(gradient_shade, "GeomRect", position = "bottom")
+gradient_shade
 
 # Save plot to file
 saveRDS(size_plot_annotated, file = "results/size_plot_annotated.rds")
