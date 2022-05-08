@@ -51,20 +51,33 @@ gradient_base <- ggplot() +
   geom_col(cmydas_na %>% 
              filter(cpue > 0), 
            mapping = aes(x = year, y= cpue, fill = cpue)) +
-  xlim(1950, 2020) +
+  scale_fill_scico(palette = 'oslo', begin = 0.2, end = 0.6, direction = -1) +
   labs(x = "Year", y = "CPUE (turtles/12 hr)", fill = "CPUE") +
-  scale_fill_gradient(high = "red", low = "blue", guide = "colourbar") +
   theme_cmydas() +
   theme(
     legend.position = "right",
-    legend.box = "horizontal",
+    legend.box = "vertical",
     legend.spacing.y = unit(3, "mm"),
     axis.title.x=element_blank(), 
     axis.text.x=element_blank(),
     axis.ticks.x=element_blank()
-  )
+  ) +
+  geom_col(cmydas_na %>% 
+             filter(cpue < 0), 
+           mapping = aes(x = year, y= cpue, alpha = "Missing Data")) +
+  scale_alpha_manual(name = NULL, values = c(1)) +
+  guides(
+    fill = guide_colourbar(order = 1),
+    alpha = guide_legend(order = 2))
 gradient_base
 
+gradient_base2 <- gradient_base +
+  geom_col(cmydas_na %>% 
+             filter(cpue < 0), 
+           mapping = aes(x = year, y= cpue, alpha = "Missing Data")) +
+  scale_alpha_manual(name = NULL, values = c(1)) +
+  guides(alpha = guide_legend(reverse=TRUE))
+gradient_base2
 
 # Annotated plot for CPUE -----------------------------------------------------
 
