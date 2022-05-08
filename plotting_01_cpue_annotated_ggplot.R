@@ -32,15 +32,39 @@ load_all("consLettersUtils")
 cmydas_data = read.csv("data/cpue_data.csv", header=TRUE)
 
 # Add placeholders for missing values . . . 
-# Store missing CPUE values in separate data frame
-cmydas_na <- cmydas_data %>% 
-  filter(is.na(cpue)) %>% 
-  select(year, cpue) %>% 
-  mutate(placeholder = -0.25) %>% 
-  mutate(type = as.factor("NA"))
+# # Store missing CPUE values in separate data frame
+# cmydas_na <- cmydas_data %>% 
+#   filter(is.na(cpue)) %>% 
+#   select(year, cpue) %>% 
+#   mutate(placeholder = -0.25) %>% 
+#   mutate(type = as.factor("NA"))
+# 
+# # Remove missing values from CPUE data frame
+# cmydas_data <- na.omit(cmydas_data)
 
-# Remove missing values from CPUE data frame
-cmydas_data <- na.omit(cmydas_data)
+# Experiment: replace placeholders with negative values in dataframe
+cmydas_na <- cmydas_data %>% 
+  mutate(cpue = replace(cpue, is.na(cpue), -0.25))
+
+# Experiment: make everything from the single data frame
+gradient_base <- ggplot() +
+  geom_col(cmydas_na %>% 
+             filter(cpue > 0), 
+           mapping = aes(x = year, y= cpue, fill = cpue)) +
+  xlim(1950, 2020) +
+  labs(x = "Year", y = "CPUE (turtles/12 hr)", fill = "CPUE") +
+  scale_fill_gradient(high = "red", low = "blue", guide = "colourbar") +
+  theme_cmydas() +
+  theme(
+    legend.position = "right",
+    legend.box = "horizontal",
+    legend.spacing.y = unit(3, "mm"),
+    axis.title.x=element_blank(), 
+    axis.text.x=element_blank(),
+    axis.ticks.x=element_blank()
+  )
+gradient_base
+
 
 # Annotated plot for CPUE -----------------------------------------------------
 
@@ -67,7 +91,7 @@ gradient_base
 scico_palette_show()
 
 gradient_base_scico <- ggplot() +
-  geom_col(cmydas_data, 
+  geom_col(cmydas_na, 
            mapping = aes(x = year, y= cpue, fill = cpue)) +
   xlim(1950, 2020) +
   labs(x = "Year", y = "CPUE (turtles/12 hr)", fill = "CPUE") +
@@ -112,16 +136,40 @@ gradient_shade <- move_layers(gradient_shade, "GeomRect", position = "bottom")
 gradient_na <- gradient_shade +
   geom_col(
     cmydas_na,
-    mapping = aes(x = year, y = placeholder)
+    mapping = aes(x = year, y = placeholder, alpha = "Missing Data")
     ) +
   theme(
-    legend.box = "vertical",
     # Remove x-axis to facilitate stacking plots later on
     axis.title.x=element_blank(),
     axis.text.x=element_blank(),
     axis.ticks.x=element_blank()
-    )
+    ) +
+  scale_alpha_manual(name = NULL,
+                     values = c(1)
+                     )
 gradient_na
+
+# Trying to add legend for placeholders
+gradient_base_scico <- ggplot() +
+  geom_col(cmydas_na, 
+           mapping = aes(x = year, y= cpue, fill = cpue)) +
+  geom_col(
+    cmydas_na,
+    mapping = aes(x = year, y = cpue, alpha = "Missing Data")
+  ) +
+  scale_alpha_manual(name = NULL,
+                     values = c(1) 
+  ) +
+  theme_cmydas() +
+  theme(
+    legend.position = "right",
+    legend.box = "horizontal"
+  ) +
+  xlim(1950, 2020) +
+  labs(x = "Year", y = "CPUE (turtles/12 hr)", fill = "CPUE") +
+  scale_fill_scico(palette = 'oslo', begin = 0.2, end = 0.6, direction = -1)
+
+gradient_base_scico
 
 # Annotate dates for key events -----------------------------------------------
 # Label 1: Beginning of permanent sea turtle conservation efforts in BLA
