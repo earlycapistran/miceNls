@@ -55,6 +55,6 @@ This folder contains processed LEK and monitoring data. These datasets were used
 - Michelle María Early Capistrán, <earlycapistran@comunidad.unam.mx>
 
 ## Citation
-Data: Early-Capistrán, M.M., Seminoff, J.A., Comisión Nacional de Áreas Naturales Protegidas, Grupo Tortuguero de Bahía de los Ángeles (2021) Dataset: Long-term abundance and morphometric data for *C. mydas* in Bahía de los Ángeles, B.C., Mexico. <https://github.com/earlycapistran/consLetters>.
+Data: Early-Capistrán, M.M., Seminoff, J.A., Comisión Nacional de Áreas Naturales Protegidas, Grupo Tortuguero de Bahía de los Ángeles (2021) Dataset: Long-term abundance and morphometric data for *C. mydas* in Bahía de los Ángeles, B.C., Mexico. <https://github.com/earlycapistran/miceNls>.
 
-Code: Early-Capistrán, M.M. (2021) R package: consLetters. <https://github.com/earlycapistran/consLetters>
+Code: Early-Capistrán, M.M. (2021) R package: consLetters. <https://github.com/earlycapistran/miceNls>
