@@ -1,4 +1,4 @@
-# Evaluating conservation outcomes through long-term data: A case study for green sea turtles in the Gulf of California
+# Integrating local ecological knowledge, ecological monitoring, and computer simulation to evaluate conservation outcomes
 
 
 ## Repository overview:
