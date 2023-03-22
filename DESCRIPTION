@@ -7,7 +7,7 @@ Description: Data and functions for Conservation Letters manuscript.
 Author: Michelle María Early Capistrán <earlycapistran@comunidad.unam.mx>
 Maintainer: Michelle María Early Capistrán <earlycapistran@comunidad.unam.mx>
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Depends:
     R (>= 3.1.0)
 Imports:

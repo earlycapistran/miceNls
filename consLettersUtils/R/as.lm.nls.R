@@ -4,7 +4,6 @@
 as.lm <- function(object, ...) UseMethod("as.lm")
 
 #' @name as.lm
-#' @aliases as.lm.nls
 #' @export
 #' @author Walmes Zeviani, \email{walmes@@ufr.br}
 #' @title Converts nls class objects to lm class
